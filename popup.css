@@ -1,0 +1,73 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    width: 20rem;
+    margin: 0;
+    padding: 1rem;
+}
+
+body > :first-child {
+    margin-top: 0;
+}
+
+body > :last-child {
+    margin-bottom: 0;
+}
+
+.heading {
+    font-size: 1rem;
+}
+
+.description {
+    margin-bottom: 1.5rem;
+}
+
+.status {
+    display: flex;
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style: none;
+    border: 0.25rem solid #00c462;
+    border-radius: 0.25rem;
+}
+
+.status__option {
+    flex: 1;
+}
+
+.status__button {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border: 0;
+    outline: 0;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.status__button--active {
+    background-color: #00c462;
+    color: #ffffff;
+}
+
+.block__button {
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border: 0;
+    outline: 0;
+    border-radius: 0.25rem;
+    background-color: #00c462;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.block__button[disabled] {
+    background-color: #aaaaaa;
+}
