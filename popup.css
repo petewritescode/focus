@@ -19,7 +19,13 @@ body > :last-child {
 }
 
 .heading {
+    display: flex;
+    align-items: center;
     font-size: 1rem;
+}
+
+.heading__logo {
+    margin-right: 0.5rem;
 }
 
 .description {
