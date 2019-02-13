@@ -35,20 +35,13 @@ body > :last-child {
 .status {
     display: flex;
     margin-bottom: 1rem;
-    padding: 0;
-    list-style: none;
     border: 0.25rem solid #00c462;
     border-radius: 0.25rem;
 }
 
-.status__option {
-    flex: 1;
-}
-
 .status__button {
-    width: 100%;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    flex: 1;
+    padding: 0.5rem 0.5rem;
     border: 0;
     outline: 0;
     background-color: #ffffff;
@@ -63,8 +56,7 @@ body > :last-child {
 
 .block__button {
     width: 100%;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding: 0.75rem 0.5rem;
     border: 0;
     outline: 0;
     border-radius: 0.25rem;
