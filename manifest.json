@@ -3,7 +3,10 @@
     "description": "Block distracting sites, stay focused and get more done",
     "version": "1.0",
     "manifest_version": 2,
-    "permissions": [ "storage" ],
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
     "background": {
         "scripts": [ "background.js" ],
         "persistent": false
