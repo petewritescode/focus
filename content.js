@@ -9,6 +9,7 @@ const showBlockMessage = () => {
     iframe.style.height = '100%';
     iframe.style.border = 0;
 
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     document.body.appendChild(iframe);
 }
