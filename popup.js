@@ -1,15 +1,36 @@
-const onButton = document.getElementById('onButton');
-const offButton = document.getElementById('offButton');
+const STATUS_BUTTON_ACTIVE_CLASS = 'status__button--active';
+
+const enableButton = document.getElementById('enableButton');
+const disableButton = document.getElementById('disableButton');
 const blockButton = document.getElementById('blockButton');
 
-onButton.addEventListener('click', () => {
-    console.log('enable');
+const updateStatusButtons = () => {
+    chrome.storage.local.get('enabled', ({ enabled }) => {
+        enableButton.classList.remove(STATUS_BUTTON_ACTIVE_CLASS);
+        disableButton.classList.remove(STATUS_BUTTON_ACTIVE_CLASS);
+
+        if (enabled) {
+            enableButton.classList.add(STATUS_BUTTON_ACTIVE_CLASS);
+        } else {
+            disableButton.classList.add(STATUS_BUTTON_ACTIVE_CLASS);
+        }
+    });
+}
+
+enableButton.addEventListener('click', () => {
+    chrome.runtime.sendMessage({ message: 'enable' }, () => {
+        updateStatusButtons();
+    });
 });
 
-offButton.addEventListener('click', () => {
-    console.log('disable');
+disableButton.addEventListener('click', () => {
+    chrome.runtime.sendMessage({ message: 'disable' }, () => {
+        updateStatusButtons();
+    });
 });
 
 blockButton.addEventListener('click', () => {
     console.log('toggle block');
 });
+
+updateStatusButtons();
