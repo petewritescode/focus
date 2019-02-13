@@ -8,13 +8,8 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     switch (request.message) {
         case 'enable':
-            chrome.storage.local.set({ enabled: true }, () => {
-                sendResponse(true);
-            });
-            return ASYNC_SEND_RESPONSE_RETURN_VALUE;
-            
         case 'disable':
-            chrome.storage.local.set({ enabled: false }, () => {
+            chrome.storage.local.set({ enabled: request.message === 'enable' }, () => {
                 sendResponse(true);
             });
             return ASYNC_SEND_RESPONSE_RETURN_VALUE;
