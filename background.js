@@ -58,7 +58,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
                 chrome.storage.sync.set({ sites: newSites }, () => {
                     sendResponse(true);
-                })
+                });
             });
             return ASYNC_SEND_RESPONSE_RETURN_VALUE;
     }
