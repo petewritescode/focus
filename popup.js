@@ -44,8 +44,10 @@ disableButton.addEventListener('click', () => {
     });
 });
 
-blockButton.addEventListener('click', () => {
-    console.log('toggle block');
+blockButton.addEventListener('click', (event) => {
+    chrome.runtime.sendMessage({ message: 'toggleBlock', hostname: event.target.value }, () => {
+        updateBlockButton();
+    });
 });
 
 updateStatusButtons();

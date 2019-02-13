@@ -24,5 +24,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 sendResponse(true);
             });
             return ASYNC_SEND_RESPONSE_RETURN_VALUE;
+
+        case 'toggleBlock':
+            chrome.storage.sync.get('sites', ({ sites }) => {
+                const { hostname } = request;
+
+                const newSites = sites.includes(hostname)
+                    ? sites.filter((site) => site !== hostname)
+                    : [ ...sites, hostname ];
+
+                chrome.storage.sync.set({ sites: newSites }, () => {
+                    sendResponse(true);
+                })
+            });
+            return ASYNC_SEND_RESPONSE_RETURN_VALUE;
     }
 });
