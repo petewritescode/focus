@@ -9,11 +9,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     switch (request.message) {
         case 'getUrlDetails':
             chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
-                const url = new URL(tabs[0].url);
+                const { protocol, hostname } = new URL(tabs[0].url);
 
                 sendResponse({
-                    protocol: url.protocol,
-                    hostname: url.hostname,
+                    protocol,
+                    hostname,
                 });
             });
             return ASYNC_SEND_RESPONSE_RETURN_VALUE;
@@ -26,9 +26,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             return ASYNC_SEND_RESPONSE_RETURN_VALUE;
 
         case 'toggleBlock':
+            const { hostname } = request;
+            
             chrome.storage.sync.get('sites', ({ sites }) => {
-                const { hostname } = request;
-
                 const newSites = sites.includes(hostname)
                     ? sites.filter((site) => site !== hostname)
                     : [ ...sites, hostname ];
